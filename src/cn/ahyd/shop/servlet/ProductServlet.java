@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cn.ahyd.shop.dao.ProductDaolmpl;
+import cn.ahyd.shop.dao.ProductDaoImpl;
 import cn.ahyd.shop.model.Product;
 
 /*
@@ -26,7 +26,7 @@ import cn.ahyd.shop.model.Product;
 @WebServlet(urlPatterns = "/servlet/ProductServlet")
 public class ProductServlet extends HttpServlet {
 
-	private ProductDaolmpl productDao = new ProductDaolmpl();
+	private ProductDaoImpl productDao = new ProductDaoImpl();
 
 	// 单例模式下的成员变量会有线程安全问题
 	// String keyword = null;

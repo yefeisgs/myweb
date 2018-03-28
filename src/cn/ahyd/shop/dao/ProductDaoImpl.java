@@ -9,7 +9,7 @@ import java.util.List;
 import cn.ahyd.shop.model.Product;
 
 
-public class ProductDaolmpl extends BaseDaoImpl<Product> {
+public class ProductDaoImpl extends BaseDaoImpl<Product> {
 	
 /*	@Override
 	protected Product getRow(ResultSet rs) throws SQLException {

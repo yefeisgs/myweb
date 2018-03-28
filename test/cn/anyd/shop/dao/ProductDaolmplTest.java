@@ -9,18 +9,18 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import cn.ahyd.shop.dao.ProductDaolmpl;
+import cn.ahyd.shop.dao.ProductDaoImpl;
 import cn.ahyd.shop.model.Product;
 
 public class ProductDaolmplTest {
 	
-	private static ProductDaolmpl daoImpl = null;
+	private static ProductDaoImpl daoImpl = null;
 	
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		
-	daoImpl = new ProductDaolmpl();	
+	daoImpl = new ProductDaoImpl();	
 	}
 
 	@AfterClass
