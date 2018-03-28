@@ -18,7 +18,7 @@ public abstract class BaseDaoImpl<T> {
 
 	//protected abstract T getRow(ResultSet rs) throws SQLException;
 
-	public T getById(String sql, Object id, RowMapper<T> mapper) {
+	public T getById(String sql, Object id, Class<T> clazz) {
 
 		T t = null;
 
@@ -34,20 +34,29 @@ public abstract class BaseDaoImpl<T> {
 			pre.setObject(1, id);
 			rs = pre.executeQuery();
 			
+			T model = clazz.newInstance();
+			ResultSetMetaData metaData = rs.getMetaData();
 			
+		
 			if (rs.next()) {
-				t = mapper.mapRow(rs);
-				
-			}
-			return t;
-
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}finally {
-			JdbcUtil.close(conn, pre, rs);
+				for(int i=1;i<=metaData.getColumnCount();i++){
+					String colName = metaData.getColumnName(i);
+//						System.out.println(colName);
+						// 3: 根据列名获取当前类的属性名
+					Field field = clazz.getDeclaredField(colName);
+						// 4: 取消安全性检查(private才能被访问)
+					field.setAccessible(true);
+					    // 5: 对当前属性进行赋值
+					field.set(model,rs.getObject(colName));
+					}
+				}
+			return model;
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+				}finally {
+					JdbcUtil.close(conn, pre, rs);
+					}
 		}
-
-	}
 
 	protected List<T> queryByBame(String sql, Object[] param, Class<T> clazz) {
 

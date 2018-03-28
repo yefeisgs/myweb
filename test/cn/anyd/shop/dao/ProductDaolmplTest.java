@@ -56,7 +56,7 @@ public class ProductDaolmplTest {
 
 	@Test
 	public void testGetByid() {
-		Product byid = daoImpl.getById(1);
+		Product byid = daoImpl.getById(6);
 		System.out.println(byid);
 	}
 	

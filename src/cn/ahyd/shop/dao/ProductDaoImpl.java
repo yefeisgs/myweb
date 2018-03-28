@@ -41,17 +41,9 @@ public class ProductDaoImpl extends BaseDaoImpl<Product> {
 	
 	
 	public Product getById(int id) {
-		String sql = "select id,name from product where id = ?";
+		String sql = "select id,price from product where id = ?";
 	
-		return super.getById(sql, id, new RowMapper<Product>() {
-			@Override
-			public Product mapRow(ResultSet rs) throws SQLException {
-				Product product = new Product();
-				product.setId(rs.getInt("id"));
-				product.setName(rs.getString("name"));
-				return product;
-			}
-		});
+		return super.getById(sql, id, Product.class);
 	}
 	
 	

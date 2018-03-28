@@ -1,7 +1,12 @@
 package cn.ahyd.shop.model;
 
-public class Users {
-    
+import java.io.Serializable;
+
+public class Users implements Serializable{
+	
+   
+	private static final long serialVersionUID = -8028314857303471448L;
+
 	private Integer id;
 
 	private String name;

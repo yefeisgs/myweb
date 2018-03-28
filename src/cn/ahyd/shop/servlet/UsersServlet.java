@@ -17,29 +17,31 @@ public class UsersServlet extends HttpServlet {
 	private UsersServiceImpl usersService = new UsersServiceImpl();
 
 	public void destroy() {
-		super.destroy(); // Just puts "destroy" string in log
-		// Put your code here
+		super.destroy(); 
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// 1: 获取前端数据
-		// request.setCharacterEncoding("UTF-8"); // 过滤器已经解决此问题
-		// 2: 调用业务逻辑(如果登录成功则把登录信息存储到session中,否则重新调回login.jsp)
+	
 		Users users = usersService.login(request.getParameter("name"),
 				request.getParameter("password"));
 		if (users != null) {
 			request.getSession().setAttribute("users", users);
-			// 会跳转到后台
+			
+			System.out.println("工程名为:" + request.getContextPath());
+			response.sendRedirect(request.getContextPath() + "/admin/index.jsp");
+
+
 		} else {
 			request.setAttribute("error", "登录失败!");
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
 		}
-		// 3: 返回结果(jsp/json)
-		request.getRequestDispatcher("/login.jsp").forward(request, response);
+		
+		
 	}
 
 	public void init() throws ServletException {
-		// Put your code here
+		
 	}
 
 }

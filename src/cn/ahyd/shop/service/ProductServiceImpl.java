@@ -5,8 +5,8 @@ import java.util.List;
 import cn.ahyd.shop.dao.ProductDaoImpl;
 import cn.ahyd.shop.model.Product;
 
-public class ProductserviceImpl {
-	private ProductDaoImpl productDao = new ProductDaoImpl();
+public class ProductServiceImpl {
+	private ProductServiceImpl productDao = new ProductServiceImpl();
 
 	public Product getById(int id) {
 		return productDao.getById(id);
