@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Product extends Object{
 	
-	public Integer id;  // int id
+	private Integer id;  // int id
 	private String name;
 	private BigDecimal price;
 	private String pic;

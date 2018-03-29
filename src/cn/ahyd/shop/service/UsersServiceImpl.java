@@ -5,9 +5,14 @@ import cn.ahyd.shop.model.Users;
 
 public class UsersServiceImpl{
 	
-private UsersDaoImpl usersDao = new UsersDaoImpl();
+	private UsersDaoImpl usersDao = null;
 	
+	public void setUsersDao(UsersDaoImpl usersDao) {
+		this.usersDao = usersDao;
+	}
+
 	public Users login(String name, String pass) {
 		return usersDao.login(name, pass);
+	
 	}
 }

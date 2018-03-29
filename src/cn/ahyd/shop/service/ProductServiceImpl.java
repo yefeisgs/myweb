@@ -6,9 +6,17 @@ import cn.ahyd.shop.dao.ProductDaoImpl;
 import cn.ahyd.shop.model.Product;
 
 public class ProductServiceImpl {
-	private ProductServiceImpl productDao = new ProductServiceImpl();
+	
+	
+	private ProductDaoImpl productDao = null;
+	
+	public void setProductDao(ProductDaoImpl productDao) {
+		this.productDao = productDao;
+	}
+	
 
 	public Product getById(int id) {
+		 System.out.println("**************");
 		return productDao.getById(id);
 	}
 

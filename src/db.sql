@@ -3,6 +3,8 @@ create database shop default character set utf8;
 use shop;
 drop table if exists product;
 
+select * from product;
+
 create table product
 (
    id                  int not null auto_increment,
