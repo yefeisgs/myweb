@@ -11,10 +11,9 @@
 	    	post: 安全(传输密码、价格)、性能差、支持文件上传
 	    	get:通过地址栏传输,安全性差,性能好
 	     -->
-		<form action="/myweb/servlet/ProductServlet" method="get">
+		<form action="${pageContext.request.contextPath}/product/query.mvc" method="get">
 			关键字:<input type="text" name="keyword" />
 			<button type="submit">提交</button>
-			<input type="hidden" name="type" value="query">
 		</form><br />
 		<table border="1" width="600">
 			<tr>
@@ -35,8 +34,8 @@
 				<td>${product.price}</td>
 				<td>${product.remark}</td>
 				<td>${product.date}</td>				
-				<td><a href="/myweb/servlet/ProductServlet?id=${product.id}&type=delete">删除</a>
-				|<a href="/myweb/servlet/ProductServlet?id=${product.id}&type=getById">更新</a>
+				<td><a href="${pageContext.request.contextPath}/product/delete.mvc?id=${product.id}">删除</a>
+				|<a href="${pageContext.request.contextPath}/product/getById.mvc?id=${product.id}">更新</a>
 				</td>
 			</tr>
 			</c:forEach>

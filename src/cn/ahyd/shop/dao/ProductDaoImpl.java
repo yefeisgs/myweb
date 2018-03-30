@@ -49,7 +49,7 @@ public class ProductDaoImpl {
 	
 	
 	public Product getById(int id) {
-		String sql = "select id,price from product where id = ?";
+		String sql = "select * from product where id = ?";
 	    System.out.println("11111");
 		return jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<Product>(Product.class), id);
 		

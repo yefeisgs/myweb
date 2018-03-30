@@ -8,7 +8,7 @@
   <body>
       <!-- System.out.println() -->
       <!-- 所有的资源前面必须要添加工程名 -->
-      <form action="/myweb/servlet/ProductServlet" method="post">
+      <form action="${pageContext.request.contextPath}/product/update.mvc" method="post">
    
       
             <!-- ctrl + alt + 方向键 -->
@@ -17,8 +17,7 @@
       		商品备注:<input type="text" name="remark" value="${product.remark}" /><br />
       		<button type="submit">提交</button>
       		<input type="hidden" name="id" value="${product.id}">
-      		<input type="hidden" name="type" value="update">
-      		
+      		      		
       </form>
   </body>
 </html>
