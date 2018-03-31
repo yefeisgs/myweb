@@ -13,5 +13,5 @@
 	
 	<mvc:annotation-driven/>
 	<context:component-scan base-package="cn.ahyd.shop.controller"/>
-	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 </beans>

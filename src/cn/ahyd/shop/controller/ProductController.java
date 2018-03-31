@@ -1,24 +1,14 @@
 package cn.ahyd.shop.controller;
 
-import java.io.IOException;
-import java.math.BigDecimal;
+import java.io.File;
 import java.util.List;
-
-import javax.annotation.Resource;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import cn.ahyd.shop.model.Product;
-import cn.ahyd.shop.service.ProductServiceImpl;
-import cn.ahyd.shop.servlet.ProductServlet;
 
 
 @Controller  
@@ -32,7 +22,16 @@ public class ProductController extends BaseContorller{
 	}
 	
 	@RequestMapping("/save")
-	public String save(Product product){
+	public String save(Product product,@RequestParam("img") MultipartFile file){
+		String path = request.getServletContext().getRealPath("/images/");
+		String filename = file.getOriginalFilename();
+		File dest = new File(path,filename);
+		try {
+			file.transferTo(dest);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		product.setPic(filename);
 		
 		productService.save(product);
 		return "redirect:/query.jsp";

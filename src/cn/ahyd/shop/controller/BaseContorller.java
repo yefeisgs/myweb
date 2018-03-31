@@ -1,7 +1,5 @@
 package cn.ahyd.shop.controller;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +7,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 
-import cn.ahyd.shop.dao.ProductDaoImpl;
 import cn.ahyd.shop.service.ProductServiceImpl;
 import cn.ahyd.shop.service.UsersServiceImpl;
 

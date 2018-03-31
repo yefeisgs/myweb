@@ -28,7 +28,6 @@ public class UsersServlet extends HttpServlet {
 		if (users != null) {
 			request.getSession().setAttribute("users", users);
 			
-			System.out.println("工程名为:" + request.getContextPath());
 			response.sendRedirect(request.getContextPath() + "/admin/index.jsp");
 
 

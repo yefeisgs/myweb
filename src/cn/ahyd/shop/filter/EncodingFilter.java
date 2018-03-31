@@ -14,7 +14,7 @@ import javax.servlet.annotation.WebFilter;
 public class EncodingFilter implements Filter {
 	
 	public EncodingFilter(){
-		System.out.println("EncodingFilter.........");
+		
 	}
 
 	@Override

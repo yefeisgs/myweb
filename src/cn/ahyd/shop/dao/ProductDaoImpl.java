@@ -2,13 +2,10 @@ package cn.ahyd.shop.dao;
 
 
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 
 import cn.ahyd.shop.model.Product;
 
@@ -50,7 +47,7 @@ public class ProductDaoImpl {
 	
 	public Product getById(int id) {
 		String sql = "select * from product where id = ?";
-	    System.out.println("11111");
+	   
 		return jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<Product>(Product.class), id);
 		
 		
@@ -76,10 +73,10 @@ public class ProductDaoImpl {
 	
 	
 	public void save(Product product) {
-		String sql = "insert into product (name,price,remark) values (?,?,?)";
+		String sql = "insert into product (name,price,remark,pic) values (?,?,?,?)";
 
 		jdbcTemplate.update(sql, new Object[] { product.getName(), product.getPrice(),
-				product.getRemark() });
+				product.getRemark(), product.getPic()});
 
 	}
 
@@ -87,7 +84,7 @@ public class ProductDaoImpl {
 		String sql = "update product set name=?,price=?,remark=? where id=?";
 
 		jdbcTemplate.update(sql, new Object[] { product.getName(), product.getPrice(),
-				product.getRemark(), product.getId() });
+				product.getRemark(), product.getId()});
 
 	}
 

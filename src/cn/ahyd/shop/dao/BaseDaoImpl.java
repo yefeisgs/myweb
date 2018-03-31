@@ -41,12 +41,11 @@ public abstract class BaseDaoImpl<T> {
 			if (rs.next()) {
 				for(int i=1;i<=metaData.getColumnCount();i++){
 					String colName = metaData.getColumnName(i);
-//						System.out.println(colName);
-						// 3: 根据列名获取当前类的属性名
+					
 					Field field = clazz.getDeclaredField(colName);
-						// 4: 取消安全性检查(private才能被访问)
+						
 					field.setAccessible(true);
-					    // 5: 对当前属性进行赋值
+					
 					field.set(model,rs.getObject(colName));
 					}
 				}
@@ -109,9 +108,7 @@ public abstract class BaseDaoImpl<T> {
 		try {
 			pre = connection.prepareStatement(sql);
 
-			/// pre.setString(1, product.getName());
-			// pre.setDouble(2, product.getPrice().doubleValue());
-			// pre.setString(3, product.getRemark());
+			
 			for (int i = 0; i < param.length; i++) {
 
 				pre.setObject(i + 1, param[i]);

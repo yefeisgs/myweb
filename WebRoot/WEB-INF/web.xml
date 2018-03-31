@@ -7,7 +7,7 @@
 		<init-param>
 			
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:spring-*.xml</param-value>
+			<param-value>classpath:spring-mvc.xml</param-value>
 		</init-param>
 		
 		<load-on-startup>1</load-on-startup>
@@ -27,5 +27,18 @@
 		<session-timeout>10</session-timeout>
 	</session-config>
 	
-
+<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring-bean.xml</param-value>
+	</context-param>
+	
+	<!-- 此监听器继承: ServletContextListener,因此在项目启动时会执行,用来加载Spring的配置文件 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>cn.ahyd.shop.listener.InitDataListerner</listener-class>
+	</listener>
+	
 </web-app>

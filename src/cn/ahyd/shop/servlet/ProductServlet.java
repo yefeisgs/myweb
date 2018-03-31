@@ -25,7 +25,7 @@ public class ProductServlet extends HttpServlet {
 	
 	public ProductServlet() {
 		super();
-		System.out.println("ProductServlet............");
+		
 	}
 
 	public void destroy() {
@@ -42,7 +42,7 @@ public class ProductServlet extends HttpServlet {
 	
 	public void update(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(request);
+		
 		
 		Product product = new Product();
 		
@@ -57,7 +57,7 @@ public class ProductServlet extends HttpServlet {
 
 	public void save(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(request);
+		
 		
 		Product product = new Product();
 		

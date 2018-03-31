@@ -16,11 +16,10 @@ public class ProductServiceImpl {
 	
 
 	public Product getById(int id) {
-		 System.out.println("**************");
 		return productDao.getById(id);
 	}
 
-	// 如果没有给集合指定类型,则默认就是object类型.可以指定泛型<Product>
+	
 	public List<Product> queryByBame(String name) {
 		return productDao.queryByBame(name);
 	}
@@ -30,7 +29,7 @@ public class ProductServiceImpl {
 
 	}
 
-	// 完成数据的插入操作 ctrl + shift + f
+	
 	public void save(Product product) {
 		productDao.save(product);
 	}

@@ -43,7 +43,6 @@ public class Product extends Object implements Serializable {
 	}
 
 	public void setName(String name) {
-		System.out.println("setName.......");
 		this.name = name;
 	}
 
