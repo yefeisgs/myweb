@@ -1,29 +1,23 @@
 package cn.ahyd.shop.service;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.*;
-
 import java.math.BigDecimal;
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cn.ahyd.shop.model.Product;
-import cn.ahyd.shop.service.ProductServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="classpath:spring-bean.xml")
 public class ProductServiceImplTest {
 
 	@Resource(name="productService")  // 查找spring-bean.xml中 id为 productService的Bean
-	private ProductServiceImpl productService;
+	private ProductService productService;
 
 	@Test
 	public void testGetById() {
@@ -50,9 +44,10 @@ public class ProductServiceImplTest {
 	@Test
 	public void testSave() {
 		Product product = new Product();
-		product.setName("000笔记本电脑");
-		product.setPrice(new BigDecimal(99.99));
-		product.setRemark("333游戏本!");
+		product.setName("666");
+		product.setPrice(new BigDecimal(900));
+		product.setRemark("22222");
+		
 		productService.save(product);
 	}
 

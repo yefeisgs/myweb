@@ -1,4 +1,4 @@
-package cn.ahyd.shop.dao;
+package cn.ahyd.shop.dao.impl;
 
 
 
@@ -7,10 +7,11 @@ import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import cn.ahyd.shop.dao.ProductDao;
 import cn.ahyd.shop.model.Product;
 
 
-public class ProductDaoImpl {
+public class ProductDaoImpl implements ProductDao {
 	
 /*	@Override
 	protected Product getRow(ResultSet rs) throws SQLException {
@@ -29,6 +30,10 @@ public class ProductDaoImpl {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
+	/* (non-Javadoc)
+	 * @see cn.ahyd.shop.dao.ProductDao#queryByBame(java.lang.String)
+	 */
+	@Override
 	public List<Product> queryByBame(String name){
 		
 		String sql = "select * from product where name like ?";
@@ -36,6 +41,10 @@ public class ProductDaoImpl {
 		}
 	
 	
+	/* (non-Javadoc)
+	 * @see cn.ahyd.shop.dao.ProductDao#queryByBame(java.lang.String, int, int)
+	 */
+	@Override
 	public List<Product> queryByBame(String name, int page, int size){
 		
 		String sql = "select id,name,price from product where name like ? limit ?,?";
@@ -45,6 +54,10 @@ public class ProductDaoImpl {
 	
 	
 	
+	/* (non-Javadoc)
+	 * @see cn.ahyd.shop.dao.ProductDao#getById(int)
+	 */
+	@Override
 	public Product getById(int id) {
 		String sql = "select * from product where id = ?";
 	   
@@ -72,7 +85,12 @@ public class ProductDaoImpl {
 	}*/
 	
 	
+	/* (non-Javadoc)
+	 * @see cn.ahyd.shop.dao.ProductDao#save(cn.ahyd.shop.model.Product)
+	 */
+	@Override
 	public void save(Product product) {
+		System.out.println(product.getPrice());
 		String sql = "insert into product (name,price,remark,pic) values (?,?,?,?)";
 
 		jdbcTemplate.update(sql, new Object[] { product.getName(), product.getPrice(),
@@ -80,6 +98,10 @@ public class ProductDaoImpl {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see cn.ahyd.shop.dao.ProductDao#update(cn.ahyd.shop.model.Product)
+	 */
+	@Override
 	public void update(Product product) {
 		String sql = "update product set name=?,price=?,remark=? where id=?";
 
@@ -88,6 +110,10 @@ public class ProductDaoImpl {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see cn.ahyd.shop.dao.ProductDao#delete(int)
+	 */
+	@Override
 	public void delete(int i) {
 		String sql = "delete from product  where id=?";
 

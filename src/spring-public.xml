@@ -15,24 +15,14 @@
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 		
-	 <context:component-scan base-package="cn.ahyd.shop.service" />
-	<context:component-scan base-package="cn.ahyd.shop.dao" />
-	
-
-   <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-   
-  		<property name="dataSource" ref="dataSource1" />
-   
+	<bean id="dataSource1" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/shop?characterEncoding=utf8" />
+		<property name="user" value="root" />
+		<property name="password" value="root" />   
    </bean>
-   <bean id="productDao" class="cn.ahyd.shop.dao.impl.ProductDaoImpl">
-		<property name="jdbcTemplate" ref="jdbcTemplate" />
-	</bean>
-	
-	<bean id="productService" class="cn.ahyd.shop.service.impl.ProductServiceImpl">
-		<property name="productDao" ref="productDao" />
-	</bean>
-	
-	 <!-- 
+
+  	 <!-- 
 	<bean id="usersDao" class="cn.ahyd.shop.dao.UsersDaoImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
@@ -41,6 +31,24 @@
 		<property name="usersDao" ref="usersDao" />
 	</bean>
 	  -->	
-	 
+	  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	   <property name="dataSource" ref="dataSource1" />
+	</bean>
+	
+	<tx:advice id="ad">
+		<tx:attributes>
+		  	<tx:method name="save" propagation="REQUIRED" />
+			<tx:method name="update" propagation="REQUIRED" />
+			<tx:method name="delete" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+	   	<aop:pointcut expression="execution(* cn.ahyd.shop.service.impl.*.*(..))" id="pt"/>
+		<aop:advisor advice-ref="ad" pointcut-ref="pt"/>
+	</aop:config>
+	
+	  
+	
 	
 </beans>

@@ -1,4 +1,4 @@
-package cn.anyd.shop.util;
+package cn.ahyd.shop.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

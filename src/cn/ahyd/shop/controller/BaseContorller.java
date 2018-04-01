@@ -7,17 +7,17 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 
-import cn.ahyd.shop.service.ProductServiceImpl;
-import cn.ahyd.shop.service.UsersServiceImpl;
+import cn.ahyd.shop.service.ProductService;
+import cn.ahyd.shop.service.UsersService;
 
 @Controller
 public class BaseContorller {
 	
 	@Resource
-	protected ProductServiceImpl productService = null;
+	protected ProductService productService = null;
 	
 	@Resource
-	protected UsersServiceImpl usersServiceImpl = null;
+	protected UsersService usersServiceImpl = null;
 	
 	
 	@Resource

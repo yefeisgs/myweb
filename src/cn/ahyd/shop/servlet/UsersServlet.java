@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.ahyd.shop.dao.UsersDaoImpl;
 import cn.ahyd.shop.model.Users;
-import cn.ahyd.shop.service.UsersServiceImpl;
+import cn.ahyd.shop.service.UsersService;
+import cn.ahyd.shop.service.impl.UsersServiceImpl;
 
 @WebServlet(urlPatterns = "/UsersServlet")
 public class UsersServlet extends HttpServlet {
-	private UsersServiceImpl usersService = new UsersServiceImpl();
+	private UsersService usersService = new UsersServiceImpl();
 
 	public void destroy() {
 		super.destroy(); 

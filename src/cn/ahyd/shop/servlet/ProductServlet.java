@@ -13,14 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cn.ahyd.shop.dao.ProductDaoImpl;
+import cn.ahyd.shop.dao.ProductDao;
+import cn.ahyd.shop.dao.impl.ProductDaoImpl;
 import cn.ahyd.shop.model.Product;
 
 
 @WebServlet(urlPatterns = "/servlet/ProductServlet")
 public class ProductServlet extends HttpServlet {
 
-	private ProductDaoImpl productDao = new ProductDaoImpl();
+	private ProductDao productDao = new ProductDaoImpl();
 
 	
 	public ProductServlet() {

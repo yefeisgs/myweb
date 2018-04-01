@@ -9,12 +9,13 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import cn.ahyd.shop.dao.ProductDaoImpl;
+import cn.ahyd.shop.dao.ProductDao;
+import cn.ahyd.shop.dao.impl.ProductDaoImpl;
 import cn.ahyd.shop.model.Product;
 
 public class ProductDaolmplTest {
 	
-	private static ProductDaoImpl daoImpl = null;
+	private static ProductDao daoImpl = null;
 	
 
 	@BeforeClass

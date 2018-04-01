@@ -10,8 +10,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.anyd.shop.util.JdbcUtil;
 import cn.ahyd.shop.dao.RowMapper;
+import cn.ahyd.shop.util.JdbcUtil;
 
 
 public abstract class BaseDaoImpl<T> {

@@ -1,11 +1,12 @@
-package cn.ahyd.shop.dao;
+package cn.ahyd.shop.dao.impl;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import cn.ahyd.shop.dao.UsersDao;
 import cn.ahyd.shop.model.Users;
 
-public class UsersDaoImpl {
+public class UsersDaoImpl implements UsersDao {
 	
 	private JdbcTemplate jdbcTemplate = null;
 	
@@ -14,6 +15,10 @@ public class UsersDaoImpl {
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see cn.ahyd.shop.dao.UsersDao#login(java.lang.String, java.lang.String)
+	 */
+	@Override
 	public Users  login(String name, String pass) {
 		
 		String sql = "select * from users where name = ? and pass = ?";

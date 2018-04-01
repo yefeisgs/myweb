@@ -7,12 +7,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import cn.ahyd.shop.model.Users;
-import cn.ahyd.shop.service.UsersServiceImpl;
+import cn.ahyd.shop.service.impl.UsersServiceImpl;
 
 public class UsersServiceImplTest {
 	
 	private static ApplicationContext context = null;
-	private static UsersServiceImpl usersService = null;
+	private static UsersService usersService = null;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
