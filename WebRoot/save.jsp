@@ -1,19 +1,56 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
   <head>
     <title>My JSP 'index.jsp' starting page</title>
+    <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
   </head>
+  
   <body>
-      <!-- System.out.println() -->
-      <!-- 所有的资源前面必须要添加工程名 -->
-      <form action="${pageContext.request.contextPath}/product/save.mvc" method="post" enctype="multipart/form-data">
-            <!-- ctrl + alt + 方向键 -->
-      		商品名称:<input type="text" name="name" value="test01" /><br />
-      		商品价格:<input type="text" name="price" value="3.14" /><br />
-      		商品图片:<input type="file" name="img" /><br />
-      		商品备注:<input type="text" name="remark" value="我是备注!" /><br />
-      		<button type="submit">提交</button>
-      	</form>
+  <div id="container">
+  
+       <form class="form-horizontal" action="${pageContext.request.contextPath}/product/save.mvc" method="post" enctype="multipart/form-data">
+          
+          <div class="form-group">
+          
+				<label for="inputName" class="col-sm-2 control-label">商品名称:</label>
+				<div class="col-sm-6">
+					<input type="text" name="name" class="form-control" id="inputName"
+						placeholder="商品名称">
+				</div>
+			</div>
+      		
+      		
+      		<div class="form-group">
+				<label for="inputPic" class="col-sm-2 control-label">商品图片:</label>
+				<div class="col-sm-6">
+					<input type="file" name="img" class="form-control" id="inputPic"
+						placeholder="商品图片">
+				</div>
+			</div>
+      		
+      		<div class="form-group">
+				<label for="inputPic" class="col-sm-2 control-label">商品价格:</label>
+				<div class="col-sm-2">
+					<input type="number" name="price" class="form-control"
+						id="inputPrice" placeholder="商品价格">
+				</div>
+			</div>
+      	
+      		<div class="form-group">
+				<label for="inputRemark" class="col-sm-2 control-label">商品备注:</label>
+				<div class="col-sm-6">
+					<textarea placeholder="请输入商品备注信息" class="form-control" name="remark" id="inputRemark"></textarea>
+				</div>
+			</div>
+       
+      	<div class="form-group">
+      		<div class="col-sm-offset-2 col-sm-10">
+      		<button type="submit" class="btn btn-primary">添加商品</button>
+      	</div>
+      </div>
+      </form>
+     </div>
   </body>
+  
 </html>
