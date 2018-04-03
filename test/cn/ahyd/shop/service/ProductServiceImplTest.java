@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import cn.ahyd.shop.model.Product;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="classpath:spring-bean.xml")
+@ContextConfiguration(locations="classpath:spring-*.xml")
 public class ProductServiceImplTest {
 
 	@Resource(name="productService")  // 查找spring-bean.xml中 id为 productService的Bean

@@ -15,9 +15,7 @@ public class UsersDaoImpl implements UsersDao {
 	}
 	
 	
-	/* (non-Javadoc)
-	 * @see cn.ahyd.shop.dao.UsersDao#login(java.lang.String, java.lang.String)
-	 */
+
 	@Override
 	public Users  login(String name, String pass) {
 		

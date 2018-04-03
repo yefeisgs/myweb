@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ahyd.shop.dao.ProductDao">
+
+	<insert id="save" parameterType="product">
+		<!-- insert into product (name,price,remark,pic) values (#{name},#{price},#{remark},#{pic}) -->
+		insert into product (
+		<include refid="param" />
+		) values (
+		<include refid="value" />
+		)
+	</insert>
+
+	<sql id="param">
+		<trim suffixOverrides=",">
+			<if test="name!=null">name,</if>
+			<if test="price!=null">price,</if>
+			<if test="remark!=null">remark,</if>
+			<if test="pic!=null">pic,</if>
+			<if test="date!=null">date,</if>
+		</trim>
+	</sql>
+	<sql id="value">
+		<trim suffixOverrides=",">
+			<if test="name!=null">#{name},</if>
+			<if test="price!=null">#{price},</if>
+			<if test="remark!=null">#{remark},</if>
+			<if test="pic!=null">#{pic},</if>
+			<if test="date!=null">#{date},</if>
+		</trim>
+	</sql>
+
+	<update id="update" parameterType="product">
+		<!-- update product set name=#{name},price=#{price},date=#{date}, remark=#{remark} 
+			where id=#{id} -->
+		update product
+		<set>
+			<if test="name!=null">
+				name = #{name},
+			</if>
+			<if test="price!=null">
+				price = #{price},
+			</if>
+			<if test="date!=null">
+				date = #{date},
+			</if>
+			<if test="remark!=null">
+				remark = #{remark},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from product
+		where id =
+		#{id}
+	</delete>
+
+	<select id="queryByName" parameterType="map" resultType="product">
+		select * from product
+		<where>
+			<if test="keyword!=null">
+				and name like #{keyword}
+			</if>
+			<if test="minPrice!=null">
+				and price &gt; #{minPrice}
+			</if>
+			<if test="maxPrice!=null">
+				and price &lt; #{maxPrice}
+			</if>
+		</where>
+	</select>
+</mapper>

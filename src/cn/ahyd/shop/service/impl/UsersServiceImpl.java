@@ -17,9 +17,7 @@ public class UsersServiceImpl implements UsersService{
 	private JdbcTemplate jdbcTemplate = null;
 
 	
-	/* (non-Javadoc)
-	 * @see cn.ahyd.shop.service.UsersService#login(java.lang.String, java.lang.String)
-	 */
+
 	@Override
 	public Users login(String name, String pass) {
 		String sql = "select * from users where name = ? and pass = ?";

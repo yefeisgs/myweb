@@ -4,6 +4,6 @@ import cn.ahyd.shop.model.Users;
 
 public interface UsersService {
 
-	Users login(String name, String pass);
+	public abstract Users login(String name, String pass);
 
 }

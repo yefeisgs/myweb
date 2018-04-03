@@ -17,30 +17,22 @@
 		
 	 <context:component-scan base-package="cn.ahyd.shop.service" />
 	<context:component-scan base-package="cn.ahyd.shop.dao" />
-	
 
-   <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-   
-  		<property name="dataSource" ref="dataSource1" />
-   
-   </bean>
-   <bean id="productDao" class="cn.ahyd.shop.dao.impl.ProductDaoImpl">
-		<property name="jdbcTemplate" ref="jdbcTemplate" />
-	</bean>
 	
+	<bean id="productDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	    <property name="mapperInterface" value="cn.ahyd.shop.dao.ProductDao" />
+	</bean>
+		
 	<bean id="productService" class="cn.ahyd.shop.service.impl.ProductServiceImpl">
 		<property name="productDao" ref="productDao" />
 	</bean>
-	
-	 <!-- 
-	<bean id="usersDao" class="cn.ahyd.shop.dao.UsersDaoImpl">
-		<property name="jdbcTemplate" ref="jdbcTemplate" />
+		
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource1" />
 	</bean>
 	
-	<bean id="usersService" class="cn.ahyd.shop.service.UsersServiceImpl">
-		<property name="usersDao" ref="usersDao" />
-	</bean>
-	  -->	
+		
 	 
 	
 </beans>
